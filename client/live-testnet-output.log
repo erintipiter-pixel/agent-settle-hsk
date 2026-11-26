@@ -1,0 +1,16 @@
+chain: HSK testnet 133 via https://testnet.hsk.xyz
+payer (agent wallet): 0x75B1Ef9cFEb617e960a2AE4551Cc01bf2522111b
+payee (ephemeral receiving agent): 0x7f69A06B10E3F1B01799987182199183b21eB679
+settlement: 0x1969ac9a8d90c79C752DB2301cCedCB0570c208A
+token (MockERC20 stand-in): 0x0a411D3B741A38BBD3c433924c62d6695d06d2c7
+mint 1000 test tokens to payer, tx: 0xb1cc9353ce8e4c93106261434e1d2e093c6be4ee605f16fb3e439941429aed59
+approve(settlement), tx: 0xa4738a5b6d7d76e97606647243cb58c86d1426987be093e12c7c2d9d1fd48023
+terms published, tx: 0x824b818f7ca27266447a0ba79262967163e4835d634612be312c9f1715c0865a
+termsHash: 0xe8e7b371789dbb819c5161b60c28fbc11d0aa9a2399bbe60f79df23af580ea63
+mandate signed by agent wallet (EIP-712)
+settle tx: 0xb35fc087bf0ff82dee482f287ba23b2bddbbf2357de74a1fd5ddb028eb57e822 → receipt #0
+verifyReceipt on-chain: true
+receipt: payer=0x75B1Ef9cFEb617e960a2AE4551Cc01bf2522111b payee=0x7f69A06B10E3F1B01799987182199183b21eB679 amount=25000000 termsHash=0xe8e7b371789dbb819c5161b60c28fbc11d0aa9a2399bbe60f79df23af580ea63
+payee balance delta: +25000000
+
+LIVE FLOW RESULT: PASS — terms → signed mandate → settlement → verified receipt, all on HSK testnet (133).

@@ -1,0 +1,10 @@
+{
+  "chainId": 133,
+  "rpc": "https://testnet.hsk.xyz",
+  "deployer": "0x75B1Ef9cFEb617e960a2AE4551Cc01bf2522111b",
+  "at": "2026-11-26T19:01:49.770Z",
+  "settlement": "0x1969ac9a8d90c79C752DB2301cCedCB0570c208A",
+  "settlementDeployTx": "0xf084b62d745e44106fdcd7e6e8fb657861e6302d2030d4d2ad9131388b16dfce",
+  "mockToken": "0x0a411D3B741A38BBD3c433924c62d6695d06d2c7",
+  "mockTokenDeployTx": "0x09c4ebde3101bc4c95fd646ea3f6e02c8152958bd491c713dca337c82573d5f6"
+}

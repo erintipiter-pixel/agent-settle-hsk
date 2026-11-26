@@ -1,0 +1,48 @@
+== forge build ==
+== starting anvil (chainId 133) ==
+deployer: 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+payee agent: 0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC
+payer (agent wallet): 0x36384443492a0c408edea15ce3f463f2b8989c03
+== deploying contracts to anvil ==
+settlement: 0x5fbdb2315678afecb367f032d93f642f64180aa3
+mock token: 0xe7f1725e7734ce288f8367e1bb143e90bb3f0512
+== funding agent wallet on anvil ==
+agent funded: 100 ETH (anvil) + 1000 mock tokens
+== starting mock coordinator on :4409 ==
+mock HSP coordinator listening on :4409 (chain 133, settlement 0x5fbdb2315678afecb367f032d93f642f64180aa3)
+== parity test (client EIP-712 vs contract) ==
+PASS  hashTerms: client == contract
+PASS  hashMandate: client == contract
+PASS  mandateDigest: client == contract
+PASS  signMandate recovers to payer
+
+PARITY RESULT: PASS — client EIP-712 model is byte-identical to the contract
+== scripted demo (ACCEPT + REJECT) ==
+chain: http://127.0.0.1:8545 (chainId 133)
+payer (agent wallet): 0x36384443492A0C408EdEA15cE3f463f2b8989C03
+payee (receiving agent): 0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC
+settlement contract: 0x5fbdb2315678afecb367f032d93f642f64180aa3
+token (test USDC stand-in): 0xe7f1725e7734ce288f8367e1bb143e90bb3f0512
+payer token balance: 1000000000
+approve(settlement) tx: 0xb7a37f11e2aa5e19d9ebed5e395bc08ef9a1d8eea2cdfecbedff4cd098ccebd7
+
+=== ACCEPT case — capabilities satisfied, receipt verifies ===
+terms published on-chain by payee, tx: 0x54acf3fa069d443630534be89f32c21750d8301de1861a3e42307d2f27bf95c5
+termsHash: 0x7d540f5f5da636299c58e06c025554ea7df6e7fc490700f94c33b86d97abb300
+session: 91423fba-16fb-48bf-8241-2adf90221d33
+intent: 09fc8d82-a0ab-463d-bf7d-2aeb6af0cbc6
+mandate signed by payer (EIP-712), nonce 819524803
+settlement tx: 0x33b4fdc04080bc19cfd1eec03556419bbf08f01925895d8c4352745d5d6163fa → receipt #0
+verifier verdict: ACCEPT (capabilities SATISFIED, receiptVerified=true)
+verify/receipt: verified=true, amount=25000000, payer=0x36384443492A0C408EdEA15cE3f463f2b8989C03
+reconcile: MATCHED
+reconcile/explain: Intent 09fc8d82-a0ab-463d-bf7d-2aeb6af0cbc6 is in state SETTLED. on-chain receipt #0 matches the intent terms (payee, token, amount, termsHash). Capabilities required [payment, verification, identity], satisfied [payment, verification, identity], missing [none]. Settlement tx: 0x33b4fdc04080bc19cfd1eec03556419bbf08f01925895d8c4352745d5d6163fa.
+payee balance delta: +25000000
+
+=== REJECT case — required capability "escrow" not satisfied ===
+terms published on-chain by payee, tx: 0x1b7a69d531d3d285603d4446955097e93de50b0e4c2f84f70a8d681b9c543503
+intent: b27ad391-1add-4116-9e89-29d42473ef3a
+settlement tx: 0x7bc196f0195a35dcc304204db9a6ab608e21dbb434d646d9150593591eceacf8 → receipt #1
+verifier verdict: REJECT (capabilities UNSATISFIED, missing=[escrow], receiptVerified=true)
+
+DEMO RESULT: PASS — ACCEPT flow settled + verified; REJECT flow rejected on capability mismatch (escrow).

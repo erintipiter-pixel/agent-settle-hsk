@@ -1,0 +1,10 @@
+# Foundry
+out/
+cache/
+
+# Node
+node_modules/
+
+# Secrets — NEVER commit a filled env file or any key material
+.env
+*.key
