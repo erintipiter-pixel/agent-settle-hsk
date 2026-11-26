@@ -124,8 +124,8 @@ mismatch).
 
 A ≤3-minute walkthrough (local demo ACCEPT + REJECT, then the live
 testnet evidence) is produced alongside this repo as `demo.mp4`
-(terminal recording + title cards). Video link: <!-- TODO: add public
-video URL after upload -->.
+(terminal recording + title cards). Video link:
+https://www.youtube.com/watch?v=EqbWwywckus
 
 ## How to run the live demo
 
